@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { Table, Button, Card, Alert, Spinner, Row, Col } from 'react-bootstrap';
+import { Table, Button, Card, Alert, Spinner, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { GET_VITAL_SIGNS, DELETE_VITAL_SIGN } from '../graphql/queries';
 
@@ -9,7 +9,7 @@ const VitalSignsList = ({ user }) => {
   const { loading, error, data, refetch } = useQuery(GET_VITAL_SIGNS);
   
   const [deleteVitalSign] = useMutation(DELETE_VITAL_SIGN, {
-    onCompleted: () => refetch()
+    onCompleted: () => refetch(),
   });
 
   const handleAddNewClick = () => navigate('/vital-signs/new');
@@ -20,16 +20,6 @@ const VitalSignsList = ({ user }) => {
       deleteVitalSign({ variables: { id } });
     }
   };
-
-  if (loading) return (
-    <div className="text-center p-5">
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
-  );
-
-  if (error) return <Alert variant="danger">Error loading vital signs: {error.message}</Alert>;
 
   const formatDate = (dateString) => {
     const date = new Date(Number(dateString));
@@ -44,55 +34,52 @@ const VitalSignsList = ({ user }) => {
   };
 
   return (
-    <div>
-      <Row className="align-items-end mb-3">
-        <Col><h2>My Vital Signs</h2></Col>
-        <Col className="text-end">
-          <Button variant="primary" onClick={handleAddNewClick}>Add New Record</Button>
-        </Col>
-      </Row>
-
-      {data && data.vitalSigns.length === 0 ? (
-        <Card className="text-center p-5">
-          <Card.Body>
-            <Card.Title>No Vital Signs Records</Card.Title>
-            <Card.Text>
-              You haven't recorded any vital signs yet. Click the button below to add your first record.
-            </Card.Text>
+    <Container className="mt-4">
+      <Card className="p-4 shadow-sm">
+        <Card.Body>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h2>Vital Signs Records</h2>
             <Button variant="primary" onClick={handleAddNewClick}>Add New Record</Button>
-          </Card.Body>
-        </Card>
-      ) : (
-        <Table striped bordered hover responsive className="vital-signs-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Pulse Rate</th>
-              <th>Blood Pressure</th>
-              <th>Temperature (°C)</th>
-              <th>Respiratory Rate</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.vitalSigns.map((vitalSign) => (
-              <tr key={vitalSign.id}>
-                <td>{formatDate(vitalSign.createdAt)}</td>
-                <td>{vitalSign.pulseRate} bpm</td>
-                <td>{vitalSign.bloodPressure} mmHg</td>
-                <td>{vitalSign.temperature}</td>
-                <td>{vitalSign.respiratoryRate} bpm</td>
-                <td className="d-flex gap-2">
-                  <Button variant="info" size="sm" onClick={() => handleViewClick(vitalSign.id)}>View</Button>
-                  <Button variant="warning" size="sm" onClick={() => handleEditClick(vitalSign.id)}>Edit</Button>
-                  <Button variant="danger" size="sm" onClick={() => handleDeleteClick(vitalSign.id)}>Delete</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-    </div>
+          </div>
+          {loading ? (
+            <Spinner animation="border" className="d-block mx-auto" />
+          ) : error ? (
+            <Alert variant="danger">Error: {error.message}</Alert>
+          ) : data.vitalSigns.length === 0 ? (
+            <Alert variant="warning">No vital sign records found.</Alert>
+          ) : (
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Pulse Rate</th>
+                  <th>Blood Pressure</th>
+                  <th>Temperature</th>
+                  <th>Respiratory Rate</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.vitalSigns.map((sign) => (
+                  <tr key={sign.id}>
+                    <td>{formatDate(sign.createdAt)}</td>
+                    <td>{sign.pulseRate} bpm</td>
+                    <td>{sign.bloodPressure} mmHg</td>
+                    <td>{sign.temperature}°C</td>
+                    <td>{sign.respiratoryRate} bpm</td>
+                    <td className="d-flex gap-2">
+                      <Button variant="info" size="sm" onClick={() => handleViewClick(sign.id)}>View</Button>
+                      <Button variant="warning" size="sm" onClick={() => handleEditClick(sign.id)}>Edit</Button>
+                      <Button variant="danger" size="sm" onClick={() => handleDeleteClick(sign.id)}>Delete</Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 
