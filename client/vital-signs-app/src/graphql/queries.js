@@ -6,7 +6,6 @@ export const GET_VITAL_SIGNS = gql`
       id
       pulseRate
       bloodPressure
-      weight
       temperature
       respiratoryRate
       createdAt
@@ -21,7 +20,6 @@ export const GET_VITAL_SIGN = gql`
       id
       pulseRate
       bloodPressure
-      weight
       temperature
       respiratoryRate
       createdAt
@@ -36,7 +34,6 @@ export const GET_LATEST_VITAL_SIGNS = gql`
       id
       pulseRate
       bloodPressure
-      weight
       temperature
       respiratoryRate
       createdAt
@@ -51,7 +48,6 @@ export const CREATE_VITAL_SIGN = gql`
       id
       pulseRate
       bloodPressure
-      weight
       temperature
       respiratoryRate
       createdAt
@@ -66,7 +62,6 @@ export const UPDATE_VITAL_SIGN = gql`
       id
       pulseRate
       bloodPressure
-      weight
       temperature
       respiratoryRate
       createdAt

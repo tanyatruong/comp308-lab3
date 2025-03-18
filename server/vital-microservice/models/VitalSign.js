@@ -21,11 +21,6 @@ const vitalSignSchema = new mongoose.Schema({
       message: props => `${props.value} is not a valid blood pressure format! Use format like "120/80"`
     }
   },
-  weight: {
-    type: Number,
-    required: true,
-    min: 0
-  },
   temperature: {
     type: Number,
     required: true,

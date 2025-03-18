@@ -6,7 +6,6 @@ const typeDefs = gql`
     userId: ID!
     pulseRate: Int!
     bloodPressure: String!
-    weight: Float!
     temperature: Float!
     respiratoryRate: Int!
     createdAt: String!
@@ -16,7 +15,6 @@ const typeDefs = gql`
   input VitalSignInput {
     pulseRate: Int!
     bloodPressure: String!
-    weight: Float!
     temperature: Float!
     respiratoryRate: Int!
   }

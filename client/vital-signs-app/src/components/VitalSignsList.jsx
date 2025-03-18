@@ -69,7 +69,6 @@ const VitalSignsList = ({ user }) => {
               <th>Date</th>
               <th>Pulse Rate</th>
               <th>Blood Pressure</th>
-              <th>Weight (kg)</th>
               <th>Temperature (°C)</th>
               <th>Respiratory Rate</th>
               <th>Actions</th>
@@ -81,7 +80,6 @@ const VitalSignsList = ({ user }) => {
                 <td>{formatDate(vitalSign.createdAt)}</td>
                 <td>{vitalSign.pulseRate} bpm</td>
                 <td>{vitalSign.bloodPressure} mmHg</td>
-                <td>{vitalSign.weight}</td>
                 <td>{vitalSign.temperature}</td>
                 <td>{vitalSign.respiratoryRate} bpm</td>
                 <td className="d-flex gap-2">

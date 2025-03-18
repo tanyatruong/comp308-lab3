@@ -12,7 +12,6 @@ const VitalSignsForm = ({ user }) => {
   const [formData, setFormData] = useState({
     pulseRate: '',
     bloodPressure: '',
-    weight: '',
     temperature: '',
     respiratoryRate: ''
   });
@@ -31,7 +30,6 @@ const VitalSignsForm = ({ user }) => {
           setFormData({
             pulseRate: data.vitalSign.pulseRate,
             bloodPressure: data.vitalSign.bloodPressure,
-            weight: data.vitalSign.weight,
             temperature: data.vitalSign.temperature,
             respiratoryRate: data.vitalSign.respiratoryRate
           });
@@ -101,7 +99,6 @@ const VitalSignsForm = ({ user }) => {
     const vitalSignInput = {
       pulseRate: parseInt(formData.pulseRate),
       bloodPressure: formData.bloodPressure,
-      weight: parseFloat(formData.weight),
       temperature: parseFloat(formData.temperature),
       respiratoryRate: parseInt(formData.respiratoryRate)
     };
@@ -184,25 +181,6 @@ const VitalSignsForm = ({ user }) => {
             </Row>
             
             <Row>
-              <Col md={4}>
-                <Form.Group className="mb-3" controlId="weight">
-                  <Form.Label>Weight (kg)</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name="weight"
-                    placeholder="Enter weight"
-                    value={formData.weight}
-                    onChange={handleChange}
-                    required
-                    min={0}
-                    step="0.1"
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a valid weight.
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-              
               <Col md={4}>
                 <Form.Group className="mb-3" controlId="temperature">
                   <Form.Label>Temperature (°C)</Form.Label>

@@ -48,8 +48,15 @@ const VitalSignsDetail = ({ user }) => {
   const { vitalSign } = data;
   
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleString();
+    const date = new Date(Number(dateString));
+    return isNaN(date.getTime()) ? "N/A" : new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).format(date);
   };
   
   return (
@@ -84,10 +91,6 @@ const VitalSignsDetail = ({ user }) => {
           </Row>
           
           <Row>
-            <Col md={4} className="detail-section">
-              <div className="detail-label">Weight</div>
-              <div className="detail-value">{vitalSign.weight} kg</div>
-            </Col>
             <Col md={4} className="detail-section">
               <div className="detail-label">Temperature</div>
               <div className="detail-value">{vitalSign.temperature} °C</div>
