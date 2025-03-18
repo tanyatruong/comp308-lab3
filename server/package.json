@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:auth": "nodemon auth-microservice/server.js",
+    "start:vital": "nodemon vital-microservice/server.js",
+    "start": "concurrently \"npm run start:auth\" \"npm run start:vital\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["microservices", "graphql", "vital-signs"],
+  "author": "Tanya Truong | 301298361",
+  "license": "ISC",
+  "description": "COMP308 | Lab Assignment #3 – Micro-Frontends and Microservices with GraphQL for Vital Signs Management",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
+  }
+}
