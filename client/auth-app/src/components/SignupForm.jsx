@@ -99,11 +99,11 @@ const SignupForm = ({ onSignupSuccess }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          minLength={6}
+          minLength={3}
           isInvalid={passwordMismatch}
         />
         <Form.Control.Feedback type="invalid">
-          Password must be at least 6 characters.
+          Password must be at least 3 characters.
         </Form.Control.Feedback>
       </Form.Group>
 

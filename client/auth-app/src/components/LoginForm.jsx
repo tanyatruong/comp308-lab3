@@ -69,10 +69,10 @@ const LoginForm = ({ onLoginSuccess }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          minLength={6}
+          minLength={3}
         />
         <Form.Control.Feedback type="invalid">
-          Password must be at least 6 characters.
+          Password must be at least 3 characters.
         </Form.Control.Feedback>
       </Form.Group>
 
