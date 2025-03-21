@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Fetch all vital signs
 export const GET_VITAL_SIGNS = gql`
   query GetVitalSigns {
     vitalSigns {
@@ -14,6 +15,7 @@ export const GET_VITAL_SIGNS = gql`
   }
 `;
 
+// Fetch a specific vital sign by ID
 export const GET_VITAL_SIGN = gql`
   query GetVitalSign($id: ID!) {
     vitalSign(id: $id) {
@@ -28,6 +30,7 @@ export const GET_VITAL_SIGN = gql`
   }
 `;
 
+// Fetch the latest vital signs for the authenticated user
 export const GET_LATEST_VITAL_SIGNS = gql`
   query GetLatestVitalSigns {
     myLatestVitalSigns {
@@ -42,6 +45,7 @@ export const GET_LATEST_VITAL_SIGNS = gql`
   }
 `;
 
+// Create a new vital sign record
 export const CREATE_VITAL_SIGN = gql`
   mutation CreateVitalSign($input: VitalSignInput!) {
     createVitalSign(input: $input) {
@@ -56,6 +60,7 @@ export const CREATE_VITAL_SIGN = gql`
   }
 `;
 
+// Update an existing vital sign record
 export const UPDATE_VITAL_SIGN = gql`
   mutation UpdateVitalSign($id: ID!, $input: VitalSignInput!) {
     updateVitalSign(id: $id, input: $input) {
@@ -70,6 +75,7 @@ export const UPDATE_VITAL_SIGN = gql`
   }
 `;
 
+// Delete a vital sign record
 export const DELETE_VITAL_SIGN = gql`
   mutation DeleteVitalSign($id: ID!) {
     deleteVitalSign(id: $id)

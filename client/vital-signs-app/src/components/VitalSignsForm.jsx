@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_VITAL_SIGN, UPDATE_VITAL_SIGN, GET_VITAL_SIGN, GET_VITAL_SIGNS } from '../graphql/queries';
 
+// Define the VitalSignsForm component
 const VitalSignsForm = ({ user }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const VitalSignsForm = ({ user }) => {
     }
   );
 
+  // Handle form submission for creating vital signs
   const [createVitalSign, { loading: createLoading }] = useMutation(CREATE_VITAL_SIGN, {
     onCompleted: () => navigate('/'),
     onError: (error) => setError(error.message),
@@ -56,6 +58,7 @@ const VitalSignsForm = ({ user }) => {
     }
   });
 
+  // Handle form submission for updating vital signs
   const [updateVitalSign, { loading: updateLoading }] = useMutation(UPDATE_VITAL_SIGN, {
     onCompleted: () => navigate('/'),
     onError: (error) => setError(error.message),

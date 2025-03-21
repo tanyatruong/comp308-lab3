@@ -3,6 +3,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 
+// AuthTabs component to render login and signup forms
 const AuthTabs = ({ onLoginSuccess }) => {
   const [activeTab, setActiveTab] = useState('login');
 

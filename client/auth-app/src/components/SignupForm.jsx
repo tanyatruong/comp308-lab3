@@ -35,6 +35,7 @@ const SignupForm = ({ onSignupSuccess }) => {
     }
   });
 
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -59,6 +60,7 @@ const SignupForm = ({ onSignupSuccess }) => {
   };
 
   return (
+    // Signup form
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       {error && <Alert variant="danger">{error}</Alert>}
       

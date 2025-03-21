@@ -4,6 +4,7 @@ import { Card, Row, Col, Button, Alert, Spinner, Container } from 'react-bootstr
 import { useNavigate, useParams } from 'react-router-dom';
 import { GET_VITAL_SIGN } from '../graphql/queries';
 
+// Define the VitalSignsDetail component
 const VitalSignsDetail = ({ user }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const VitalSignsDetail = ({ user }) => {
     variables: { id }
   });
 
+  // Define event handlers for button clicks
   const handleBackClick = () => navigate('/');
   const handleEditClick = () => navigate(`/vital-signs/edit/${id}`);
 
@@ -29,6 +31,7 @@ const VitalSignsDetail = ({ user }) => {
     </Container>
   );
 
+  // If no data is returned, display a warning message
   if (!data || !data.vitalSign) {
     return (
       <Container className="mt-4">

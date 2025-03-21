@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
+// Connect to MongoDB for Auth microservice
 const connectAuthDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/vital-signs-auth-db', {
+    await mongoose.connect('mongodb://localhost:27017/lab3-auth-db', {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
@@ -13,9 +14,10 @@ const connectAuthDB = async () => {
   }
 };
 
+// Connect to MongoDB for Vital Signs microservice
 const connectVitalSignsDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/vital-signs-service-db', {
+    await mongoose.connect('mongodb://localhost:27017/lab3-vital-db', {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });

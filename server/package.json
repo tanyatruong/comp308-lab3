@@ -5,8 +5,7 @@
   "scripts": {
     "start:auth": "nodemon auth-microservice/server.js",
     "start:vital": "nodemon vital-microservice/server.js",
-    "start": "concurrently \"npm run start:auth\" \"npm run start:vital\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run start:auth\" \"npm run start:vital\""
   },
   "keywords": ["microservices", "graphql", "vital-signs"],
   "author": "Tanya Truong | 301298361",

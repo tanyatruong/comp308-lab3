@@ -9,6 +9,7 @@ const LOGOUT_MUTATION = gql`
   }
 `;
 
+// Navbar header component
 const Header = ({ isLoggedIn, user }) => {
   const navigate = useNavigate();
   const [logout] = useMutation(LOGOUT_MUTATION, {
@@ -19,6 +20,7 @@ const Header = ({ isLoggedIn, user }) => {
     }
   });
 
+  // Handle logout event
   const handleLogout = () => {
     logout();
   };

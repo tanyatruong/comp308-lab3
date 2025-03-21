@@ -4,6 +4,7 @@ import { Table, Button, Card, Alert, Spinner, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { GET_VITAL_SIGNS, DELETE_VITAL_SIGN } from '../graphql/queries';
 
+// Define the VitalSignsList component
 const VitalSignsList = ({ user }) => {
   const navigate = useNavigate();
   const { loading, error, data, refetch } = useQuery(GET_VITAL_SIGNS);
@@ -12,6 +13,7 @@ const VitalSignsList = ({ user }) => {
     onCompleted: () => refetch(),
   });
 
+  // Define event handlers for button clicks
   const handleAddNewClick = () => navigate('/vital-signs/new');
   const handleEditClick = (id) => navigate(`/vital-signs/edit/${id}`);
   const handleViewClick = (id) => navigate(`/vital-signs/view/${id}`);

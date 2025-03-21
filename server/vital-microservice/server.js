@@ -21,7 +21,7 @@ app.use(cors({
 app.use(cookieParser());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/vital-signs-service-db')
+mongoose.connect('mongodb://localhost:27017/lab3-vital-db')
   .then(() => console.log('Connected to MongoDB (vital-signs-service)'))
   .catch(err => console.error('MongoDB connection error:', err));
 
